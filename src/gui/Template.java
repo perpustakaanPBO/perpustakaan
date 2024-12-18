@@ -76,7 +76,7 @@ public class Template extends javax.swing.JFrame {
         setSize(982, 989);
 
         // Add the background panel to the layered pane
-        Background background = new Background("E:/java_project/Perpustakaan/src/assets/background.png");
+        Background background = new Background("assets/background.png");
         background.setLayout(new java.awt.GridBagLayout()); // Use GridBagLayout for centering
         background.setBounds(0, 0, getWidth(), getHeight());
         jLayeredPane1.add(background, JLayeredPane.DEFAULT_LAYER);
