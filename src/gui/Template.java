@@ -5,10 +5,12 @@
  */
 package gui;
 
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 /**
  *
@@ -30,17 +32,30 @@ public class Template extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 818, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 529, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1009, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
 
         pack();
@@ -52,24 +67,36 @@ public class Template extends javax.swing.JFrame {
 
     
     public Template() throws IOException {
-        // Initialize the JFrame
+        // Initialize components (including jLayeredPane1)
+        initComponents();
+
+        // Set JFrame properties
         setTitle("Template with Background");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(982, 689);
-       
+        setSize(982, 989);
+
+        // Add the background panel to the layered pane
         Background background = new Background("E:/java_project/Perpustakaan/src/assets/background.png");
-        background.setLayout(new BorderLayout());
-        
+        background.setLayout(new java.awt.GridBagLayout()); // Use GridBagLayout for centering
+        background.setBounds(0, 0, getWidth(), getHeight());
+        jLayeredPane1.add(background, JLayeredPane.DEFAULT_LAYER);
+
+        // Add the Login panel to the background and center it
         Login lg = new Login();
-//        lg.setBounds();
-        
-        
-        background.add(lg);
-        // Create and add the custom Background panel
-        setContentPane(background);
-        // Center the JFrame on the screen
+        lg.setPreferredSize(new java.awt.Dimension(800, 700)); // Set a fixed size for the Login panel
+        background.add(lg, new java.awt.GridBagConstraints()); // Center the Login panel
+
+        // Ensure components are displayed correctly
+        jLayeredPane1.revalidate();
+        jLayeredPane1.repaint();
+
+        // Center the JFrame
         setLocationRelativeTo(null);
     }
+
+
+    
+
 
     public static void main(String[] args) {
         // Launch the application
@@ -83,5 +110,6 @@ public class Template extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }
