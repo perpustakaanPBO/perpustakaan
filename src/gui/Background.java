@@ -26,7 +26,7 @@ public class Background extends javax.swing.JPanel {
 
     public Background(String filename) throws IOException {
         // Load the image from the provided path
-        backgroundImage = new ImageIcon(filename).getImage();
+        backgroundImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(filename));
     }
 
     @Override
