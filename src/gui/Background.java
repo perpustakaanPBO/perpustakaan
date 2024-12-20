@@ -7,36 +7,51 @@ package gui;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Ken Jaya
  */
 public class Background extends javax.swing.JPanel {
+    private Image backgroundImage;
 
-    /**
-     * Creates new form Background
-     */
-    
-    private final Image backgroundImage;
-
-    public Background(String filename) throws IOException {
-        // Load the image from the provided path
-        backgroundImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(filename));
+    public Background(JFrame frame, String imagePath) {
+        try {
+            backgroundImage = new ImageIcon(getClass().getResource(imagePath)).getImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        // Create the background panel
+        
+        
+        // Set the bounds to match the frame size
+        this.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+        
+        // Add the background as the first component
+        frame.getContentPane().add(this);
+        frame.getContentPane().setComponentZOrder(this, frame.getContentPane().getComponentCount() - 1);
+        
+        // Revalidate and repaint to ensure the changes are visible
+        frame.revalidate();
+        frame.repaint();
     }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (backgroundImage != null) {
-            // Scale the image to fit the panel size
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            
         }
     }
+    
+    public static void addToFrame(JFrame frame, String imagePath) {
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,35 +62,21 @@ public class Background extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-
         setBackground(new java.awt.Color(102, 102, 102));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 992, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 992, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 715, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
