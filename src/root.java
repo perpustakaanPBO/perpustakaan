@@ -1,5 +1,5 @@
 
-import gui.Template;
+import gui.Login;
 import gui.Background;
 import java.io.IOException;
 /*
@@ -21,9 +21,8 @@ public class root {
      */
     public static void main(String[] args) throws IOException {
         
-        Template t = new Template();
+        Login t = new Login();
         
-        t.getContentPane().add(new Background("E:/java_project/Perpustakaan/src/assets/background.png"));
         
     }
     
