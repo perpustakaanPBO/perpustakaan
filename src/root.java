@@ -21,7 +21,7 @@ public class root {
      */
     public static void main(String[] args) throws IOException {
         
-        Login t = new Login();
+        new Login();
         
         
     }
