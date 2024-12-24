@@ -22,7 +22,7 @@ public class Register extends javax.swing.JFrame {
     public Register() throws IOException {
         initComponents();
         
-        new Background(this, "/assets/background.png");
+        
         
         setLocationRelativeTo(null);
     }

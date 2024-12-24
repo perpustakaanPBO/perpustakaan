@@ -1,6 +1,5 @@
 
 import gui.Login;
-import gui.Background;
 import java.io.IOException;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +20,7 @@ public class root {
      */
     public static void main(String[] args) throws IOException {
         
-        new Login();
+        new Login().show();
         
         
     }
