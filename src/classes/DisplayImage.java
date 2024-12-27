@@ -15,12 +15,16 @@ import javax.swing.JLabel;
  */
 public class DisplayImage {
     
-    public DisplayImage(JLabel label, String image){
+    public DisplayImage(int width, int height, JLabel label, String image){
         ImageIcon imageIco = new ImageIcon(getClass().getResource(image));
-        Image imageRes = imageIco.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_FAST);
+        Image imageRes = imageIco.getImage().getScaledInstance(width, height, Image.SCALE_FAST);
         
         label.setIcon(new ImageIcon(imageRes));
         
+    }
+
+    public DisplayImage(int width, int height, JLabel jLabel_Logo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -6,11 +6,16 @@
 package gui;
 
 
+import classes.DB;
 import classes.DisplayImage;
-import java.awt.Image;
 import java.io.IOException;
-import javax.swing.ImageIcon;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 
@@ -188,7 +193,43 @@ public class Login extends javax.swing.JFrame{
     }//GEN-LAST:event_jTextField_usernameActionPerformed
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
-        // TODO add your handling code here:
+        String username = jTextField_username.getText();
+        String password = String.valueOf(jPasswordField_password.getPassword());
+        
+        ResultSet rs;
+        PreparedStatement ps = null;
+        
+        String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
+        
+        if(username.trim().equals("") || password.trim().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Username atau password salah", "Data Salah", 0);
+            
+        }else{
+        
+            try {
+                ps = DB.getConnection().prepareStatement(query);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next()){
+                
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.setVisible(true);
+                    
+                    this.dispose();
+                    
+                }else{
+                
+                    System.out.println("NO");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
@@ -214,7 +255,7 @@ public class Login extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         
         
-        new DisplayImage(jLabel_Logo, "/assets/iPusPrime.png");
+        new DisplayImage(jLabel_Logo.getWidth(),jLabel_Logo.getHeight(), jLabel_Logo, "/assets/iPusPrime.png");
     }
 
     public static void main(String[] args) {

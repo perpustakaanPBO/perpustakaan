@@ -3,6 +3,7 @@ package classes;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,17 +22,17 @@ public class DB {
     public static Connection getConnection() throws SQLException{
         Connection connection = null;
         
-        MysqlDataSource dataSource = new MysqlDataSource();
-        
-        dataSource.setServerName(serverName);
-        dataSource.setUser(userName);
-        dataSource.setPassword(password);
-        dataSource.setDatabaseName(dbname);
-        dataSource.setPortNumber(portNumber);
+//        MysqlDataSource dataSource = new MysqlDataSource();
+//        
+//        dataSource.setServerName(serverName);
+//        dataSource.setUser(userName);
+//        dataSource.setPassword(password);
+//        dataSource.setDatabaseName(dbname);
+//        dataSource.setPortNumber(portNumber);
         
         try{
         
-            connection = dataSource.getConnection();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
         }catch(Exception e){
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, e);
         }

@@ -31,7 +31,7 @@ public class Dashboard extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-        new DisplayImage(jLabel_Dashboard_Logo, "/assets/iPusPrime.png");
+        new DisplayImage(jLabel_Dashboard_Logo.getWidth(),jLabel_Dashboard_Logo.getHeight(),jLabel_Dashboard_Logo, "/assets/iPusPrime.png");
         
         Border panelHeaderBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white);
         jPanel_Header.setBorder(panelHeaderBorder);
