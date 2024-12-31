@@ -236,7 +236,11 @@ public class ManageGenres extends javax.swing.JFrame {
         
         }else{
         
-            genre.addGenre(name);
+            try {
+                genre.addGenre(name);
+            } catch (SQLException ex) {
+                Logger.getLogger(ManageGenres.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             populateJtableWithGenres();
             

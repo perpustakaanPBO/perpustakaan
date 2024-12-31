@@ -147,6 +147,7 @@ public class Genre extends DB {
         
         return gList;
     }
+}
       
     
     
