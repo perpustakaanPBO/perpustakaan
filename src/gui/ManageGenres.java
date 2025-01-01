@@ -9,11 +9,13 @@ import classes.DisplayImage;
 import classes.Genre;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -100,6 +102,12 @@ public class ManageGenres extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Name: ");
+
+        jTextField_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_NameActionPerformed(evt);
+            }
+        });
 
         jButton_Add.setText("Add");
         jButton_Add.addActionListener(new java.awt.event.ActionListener() {
@@ -296,10 +304,10 @@ public class ManageGenres extends javax.swing.JFrame {
 
     private void jTable_GenresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_GenresMouseClicked
        
-        int index = jTable_Genres_.getSelectedRow();
+        int index = jTable_Genres.getSelectedRow();
         
-        String id = jTable_Genres_.getValeAt(index, 0).toString();
-        String name = jTable_Genres_.getValeAt(index, 1).toString();
+        String id = jTable_Genres.getValueAt(index, 0).toString();
+        String name = jTable_Genres.getValueAt(index, 1).toString();
         
         jTextField_ID.setText(id);
         jTextField_Name.setText(name);
@@ -309,20 +317,20 @@ public class ManageGenres extends javax.swing.JFrame {
     
     public void populateJtableWithGenres(){
         
-        ArrayList<My_Classes.Genre> genresList = genre.genreList ();
+        ArrayList<classes.Genre> genresList = genre.genreList ();
         
         String[] colNames = {"ID","NAME"};
         
-        object[][] rows = new object[genresList.size()][colNames.length];
+        Object[][] rows = new Object[genresList.size()][colNames.length];
         
         for(int i = 0; i < genresList.size(); i++)
         {
             rows[i][0] = genresList.get(i).getId();
-            rows[i][1] = genresList.gen(i).getName();
+            rows[i][1] = genresList.get(i).getName();
         }
         
         DefaultTableModel model = new DefaultTableModel(rows,colNames);
-        jTable_Genres_.setModel(model);
+        jTable_Genres.setModel(model);
     }
     
     
@@ -333,6 +341,10 @@ public class ManageGenres extends javax.swing.JFrame {
     private void jLabel_EmptyNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyNameMouseClicked
         jLabel_EmptyName.setVisible(false);
     }//GEN-LAST:event_jLabel_EmptyNameMouseClicked
+
+    private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_NameActionPerformed
 
     /**
      * @param args the command line arguments

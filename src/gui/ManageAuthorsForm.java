@@ -5,11 +5,13 @@ import classes.DisplayImage;
 import classes.Genre;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -374,10 +376,10 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
 
     private void jTable_Author_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Author_MouseClicked
        
-        int index = jTable_Genres_.getSelectedRow();
+        int index = jTable_Author_.getSelectedRow();
         
-        String id = jTable_Genres_.getValeAt(index, 0).toString();
-        String name = jTable_Genres_.getValeAt(index, 1).toString();
+        String id = jTable_Author_.getValueAt(index, 0).toString();
+        String name = jTable_Author_.getValueAt(index, 1).toString();
         
         jTextField_ID.setText(id);
         jTextField_FirstName.setText(name);
@@ -387,20 +389,20 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
     
     public void populateJtableWithGenres(){
         
-        ArrayList<My_Classes.Genre> genresList = genre.genreList ();
+        ArrayList<classes.Genre> genresList = genre.genreList ();
         
         String[] colNames = {"ID","NAME"};
         
-        object[][] rows = new object[genresList.size()][colNames.length];
+        Object[][] rows = new Object[genresList.size()][colNames.length];
         
         for(int i = 0; i < genresList.size(); i++)
         {
             rows[i][0] = genresList.get(i).getId();
-            rows[i][1] = genresList.gen(i).getName();
+            rows[i][1] = genresList.get(i).getName();
         }
         
         DefaultTableModel model = new DefaultTableModel(rows,colNames);
-        jTable_Genres_.setModel(model);
+        jTable_Author_.setModel(model);
     }
     
     

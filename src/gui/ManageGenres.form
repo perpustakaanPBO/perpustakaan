@@ -175,6 +175,9 @@
         <Component class="javax.swing.JTextField" name="jTextField_ID">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_Name">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_NameActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_Add">
           <Properties>
