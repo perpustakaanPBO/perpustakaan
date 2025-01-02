@@ -2,7 +2,7 @@
 package gui;
 
 import classes.DisplayImage;
-import classes.Genre;
+import classes.Author;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
      * Creates new form ManageGenres
      */
     
-    Genre genre = new Genre();
+    Author author = new Author();
     
     public ManageAuthorsForm() {
         initComponents();
@@ -38,10 +38,11 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         jTable_Author_.setSelectionBackground(Color.lightGray);
         jTable_Author_.setRowHeight(30);
         jTable_Author_.setShowGrid(true);
+      
         
         jLabel_EmptyFirstName_.setVisible(false);
         jLabel_EmptyLastName_.setVisible(false);
-        populateJtableWithGenres();
+        populateJtableWithAuthors();
         
     }
 
@@ -166,6 +167,12 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Last Name: ");
 
+        jTextField_LastName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField_LastName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_LastNameMouseClicked(evt);
+            }
+        });
         jTextField_LastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_LastNameActionPerformed(evt);
@@ -184,12 +191,14 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Expertise: ");
 
+        jTextField_About.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField_About.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_AboutActionPerformed(evt);
             }
         });
 
+        jTextField_Expertise.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField_Expertise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_ExpertiseActionPerformed(evt);
@@ -311,27 +320,27 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         
-        String name = jTextField_FirstName.getText();
+        String fname = jTextField_FirstName.getText();
+        String lname = jTextField_LastName.getText();
+        String expertise = jTextField_Expertise.getText();
+        String about = jTextArea_About.getText();
         
         
-        if(name.isEmpty()){
+        if(fname.isEmpty()){
         
             jLabel_EmptyFirstName_.setVisible(true);
+        }
+        else if(lname.isEmpty()){
         
-        }else{
+            jLabel_EmptyLastName_.setVisible(true);
+        }
+        else
+        {
         
-            genre.addGenre(name);
+            author.addAuthor(fname,lname,expertise,about);
             
-            populateJtableWithGenres();
+            //populateJtableWithGenres();
             
-            try {
-                genre.addGenre(name);
-                
-                jLabel_EmptyFirstName_.setVisible(false);
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(ManageAuthorsForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
@@ -339,34 +348,47 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         
         try {
                 int id = Integer.parseInt(jTextField_ID.getText());  
-                genre.removeGenre(id);
+                author.removeAuthor(id);
                 
-                populateJtableWithGenres();
+                //populateJtableWithGenres();
                 
                 jTextField_ID.setText("");
                 jTextField_FirstName.setText("");
+                jTextField_LastName.setText("");
+                jTextField_Expertise.setText("");
+                jTextArea_About.setText("");
                 
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Invalid Genre ID - " + ex.getMessage(), "Erorr", 0);
+                JOptionPane.showMessageDialog(null, "Invalid Author ID - " + ex.getMessage(), "Erorr", 0);
             } 
         
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
         
-        String name = jTextField_FirstName.getText();
+        String fname = jTextField_FirstName.getText();
+        String lname = jTextField_LastName.getText();
+        String expertise = jTextField_Expertise.getText();
+        String about = jTextArea_About.getText();
         
-        if(name.isEmpty()){
+        if(fname.isEmpty()){
+        
             jLabel_EmptyFirstName_.setVisible(true);
-        }else{
+        }
+        else if(lname.isEmpty()){
+        
+            jLabel_EmptyLastName_.setVisible(true);
+        }
+        else
+        {
             
             try {
                 int id = Integer.parseInt(jTextField_ID.getText());  
-                genre.editGenre(id, name);
+                author.editAuthor(id, fname,lname,expertise,about);
                 
-                populateJtableWithGenres();
+                //populateJtableWithGenres();
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Invalid Genre ID" + ex.getMessage(), "Erorr", 0);
+                JOptionPane.showMessageDialog(null, "Invalid Author ID" + ex.getMessage(), "Erorr", 0);
             } catch (SQLException ex) {
                 Logger.getLogger(ManageAuthorsForm.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -379,30 +401,41 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         int index = jTable_Author_.getSelectedRow();
         
         String id = jTable_Author_.getValueAt(index, 0).toString();
-        String name = jTable_Author_.getValueAt(index, 1).toString();
+        String firstName = jTable_Author_.getValueAt(index, 1).toString();
+        String lastName = jTable_Author_.getValueAt(index, 2).toString();
+        String expertise = jTable_Author_.getValueAt(index, 3).toString();
+        String about= jTable_Author_.getValueAt(index, 4).toString();
         
         jTextField_ID.setText(id);
-        jTextField_FirstName.setText(name);
+        jTextField_FirstName.setText(firstName);
+        jTextField_LastName.setText(lastName);
+        jTextField_Expertise.setText(expertise);
+        jTextArea_About.setText(about);
         
     }//GEN-LAST:event_jTable_Author_MouseClicked
 
     
-    public void populateJtableWithGenres(){
+    public void populateJtableWithAuthors(){
         
-        ArrayList<classes.Genre> genresList = genre.genreList ();
         
-        String[] colNames = {"ID","NAME"};
+        ArrayList<classes.Author> authorList = author.authorsList ();
         
-        Object[][] rows = new Object[genresList.size()][colNames.length];
+        String[] colNames = {"ID","F-Name","L-Name","Expertise","About"};
         
-        for(int i = 0; i < genresList.size(); i++)
+        Object[][] rows = new Object[authorList.size()][colNames.length];
+        
+        for(int i = 0; i < authorList.size(); i++)
         {
-            rows[i][0] = genresList.get(i).getId();
-            rows[i][1] = genresList.get(i).getName();
+            rows[i][0] = authorList.get(i).getId();
+            rows[i][1] = authorList.get(i).getFirstName();
+            rows[i][2] = authorList.get(i).getLastName();
+            rows[i][3] = authorList.get(i).getField_of_Expertise();
+            rows[i][4] = authorList.get(i).getAbout();
         }
         
         DefaultTableModel model = new DefaultTableModel(rows,colNames);
         jTable_Author_.setModel(model);
+        
     }
     
     
@@ -437,6 +470,12 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
     private void jTextField_ExpertiseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ExpertiseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_ExpertiseActionPerformed
+
+    private void jTextField_LastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_LastNameMouseClicked
+     
+        jLabel_EmptyLastName_.setVisible(false);
+        
+    }//GEN-LAST:event_jTextField_LastNameMouseClicked
 
     /**
      * @param args the command line arguments
