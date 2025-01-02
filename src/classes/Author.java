@@ -102,7 +102,7 @@ public class Author {
       
       public void editAuthor(int _id,String _fname,String _lname,String _expertise,String _about ) throws SQLException{
     
-        String editQuery = "UPDATE `author` SET `firstName`=?,`lastName`=?,`expertise`=?,`about`=? WHERE 1`id`"; 
+        String editQuery = "UPDATE `author` SET `firstName`=?,`lastName`=?,`expertise`=?,`about`=? WHERE `id`=?"; 
        
         try{
             
