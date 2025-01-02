@@ -75,7 +75,7 @@ public class Author {
     
       public void addAuthor(String _fname,String _lname,String _expertise,String _about) throws SQLException{
     
-        String insertQuery = "INSERT INTO `author`(`firstName`, `lastName`, `expertise`, `about`) VALUES (`?,?,?,?)";
+        String insertQuery = "INSERT INTO `author`(`firstName`, `lastName`, `expertise`, `about`) VALUES (?,?,?,?)";
         
         
         

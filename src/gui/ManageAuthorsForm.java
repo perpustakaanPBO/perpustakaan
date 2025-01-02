@@ -314,7 +314,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String expertise = jTextField_Expertise.getText();
-        String about = jTextField_About.getText();
+        String about = jTextArea_About.getText();
         
         
         if(fname.isEmpty()){
@@ -351,7 +351,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
                 jTextField_FirstName.setText("");
                 jTextField_LastName.setText("");
                 jTextField_Expertise.setText("");
-                jTextField_About.setText("");
+                jTextArea_About.setText("");
                 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid Author ID - " + ex.getMessage(), "Erorr", 0);
@@ -364,7 +364,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String expertise = jTextField_Expertise.getText();
-        String about = jTextField_About.getText();
+        String about = jTextArea_About.getText();
         
         if(fname.isEmpty()){
         
@@ -405,7 +405,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         jTextField_FirstName.setText(firstName);
         jTextField_LastName.setText(lastName);
         jTextField_Expertise.setText(expertise);
-        jTextField_About.setText(about);
+        jTextArea_About.setText(about);
         
     }//GEN-LAST:event_jTable_Author_MouseClicked
 
