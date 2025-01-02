@@ -1,6 +1,14 @@
 
 package classes;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 public class Author {
     
@@ -120,13 +128,13 @@ public class Author {
             
     }
       
-      public void removeGenre(int _id ) {
+      public void removeAuthor(int _id ) {
     
         String removeAuthor = "DELETE FROM `author` WHERE `id` = ?"; 
        
         try{
             
-            PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeAuthor);
             
             ps.setInt(1, _id);
            
@@ -164,7 +172,7 @@ public class Author {
             
             while(rs.next()){
                 
-             3  
+              
                 author = new Author(rs.getInt("id"), rs.getString("firstName"),rs.getString("lastName"),rs.getString("expertise"),rs.getString("about"));
                 aList.add(author);
             }
@@ -175,5 +183,4 @@ public class Author {
         
         return aList;
     }
-}
 }
