@@ -238,23 +238,14 @@ public class EditMember extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_CloseForm, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jButton_Edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextField_Email)
+                    .addComponent(jTextField_LastName)
+                    .addComponent(jTextField_Phone)
+                    .addComponent(jComboBox_Gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -264,13 +255,6 @@ public class EditMember extends javax.swing.JFrame {
                             .addComponent(jLabel_EmptyLastName_)
                             .addComponent(jLabel_EmptyPhone_)
                             .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox_Gender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -281,9 +265,22 @@ public class EditMember extends javax.swing.JFrame {
                                             .addComponent(jButton_SelectProfilePicture_)
                                             .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)))
-                                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(90, 159, Short.MAX_VALUE))))
-            .addComponent(jButton_Edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(0, 74, Short.MAX_VALUE)))
+                .addGap(116, 116, 116))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField_FirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jTextField_Id))
+                    .addComponent(jLabel_FormTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_CloseForm, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +332,7 @@ public class EditMember extends javax.swing.JFrame {
                         .addGap(16, 16, 16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(69, Short.MAX_VALUE))))
+                        .addContainerGap(75, Short.MAX_VALUE))))
         );
 
         jTextField_Id.getAccessibleContext().setAccessibleName("");
@@ -350,8 +347,7 @@ public class EditMember extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -365,8 +361,14 @@ public class EditMember extends javax.swing.JFrame {
 
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
         
-        int id = Integer.parseInt(jTextField_Id.getText());
+        // edit the selected member 
         
+        // hide the jlabel "empty name masage "
+        jLabel_EmptyFirstName_.setVisible(false);
+        jLabel_EmptyLastName_.setVisible(false);
+        jLabel_EmptyPhone_.setVisible(false);
+        
+        // get member data 
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String phone = jTextField_Phone.getText();
@@ -395,21 +397,12 @@ public class EditMember extends javax.swing.JFrame {
             {
                     try {
                         
+                        Integer id = Integer.valueOf(jTextField_Id.getText()); 
                         Path path = Paths.get(imagePath);
-                        
                         img = Files.readAllBytes(path);
-                        
-                    } catch (IOException ex) {
-                        
-                        Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
-                        
-                    }
-                    
-                    try {
-                        
                         member.editMember(id, fname, lname, phone, email, gender, img);
                         
-                    } catch (SQLException ex) {
+                    } catch (IOException | SQLException | NumberFormatException ex) {
                         
                         Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
                         
@@ -507,15 +500,10 @@ public class EditMember extends javax.swing.JFrame {
             // Fetch member data
             Member SelectedMember = member.getMemberById(id);
             
-            if (SelectedMember == null) {
-                JOptionPane.showMessageDialog(this, "No member found with the given ID.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            
            
-           
-            
-            jTextField_Id.setText(String.valueOf(SelectedMember.getId()));
+           if (SelectedMember != null)
+           {
+           jTextField_Id.setText(String.valueOf(SelectedMember.getId()));
             
             jTextField_FirstName.setText(SelectedMember.getFirstName());
             
@@ -530,6 +518,12 @@ public class EditMember extends javax.swing.JFrame {
             byte[] image  = SelectedMember.getPicture();
             
             new DisplayImage(jLabel_Image.getWidth(), jLabel_Image.getHeight(), image, jLabel_Image, "");
+           }else 
+           {
+            JOptionPane.showMessageDialog(null, "No Member Whit This ID is Found ", "Invalid ID", 3);
+
+           }
+             
             
         } catch (SQLException | NumberFormatException ex) {
             //Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);

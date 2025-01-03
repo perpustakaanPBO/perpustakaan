@@ -316,6 +316,13 @@ public class AddMember extends javax.swing.JFrame {
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         
+        
+        //hide the jlabels "Empty massage"
+        jLabel_EmptyFirstName_.setVisible(false);
+        jLabel_EmptyLastName_.setVisible(false);
+        jLabel_EmptyPhone_.setVisible(false);
+
+        //get the member data
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String phone = jTextField_Phone.getText();
