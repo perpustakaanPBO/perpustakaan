@@ -397,6 +397,12 @@ public class EditMember extends javax.swing.JFrame {
             {
                     try {
                         
+                        File imageFile = new File(imagePath);
+                        if(imageFile.length() > 1048576) {
+                        JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
+                        return;
+                        }
+                        
                         Integer id = Integer.valueOf(jTextField_Id.getText()); 
                         Path path = Paths.get(imagePath);
                         img = Files.readAllBytes(path);
@@ -405,6 +411,8 @@ public class EditMember extends javax.swing.JFrame {
                     } catch (IOException | SQLException | NumberFormatException ex) {
                         
                         Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
+                        return;
                         
                     }
                 

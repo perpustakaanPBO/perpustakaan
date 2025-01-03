@@ -1,25 +1,10 @@
 
 package gui;
-
-import classes.DisplayImage;
 import models.Member;
 import java.awt.Color;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -75,6 +60,11 @@ public class DeleteMember extends javax.swing.JFrame {
         jLabel_FormTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_FormTitle.setText("Delete Member");
         jLabel_FormTitle.setOpaque(true);
+        jLabel_FormTitle.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jLabel_FormTitleComponentMoved(evt);
+            }
+        });
 
         jLabel_CloseForm.setBackground(java.awt.Color.gray);
         jLabel_CloseForm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -219,6 +209,10 @@ public class DeleteMember extends javax.swing.JFrame {
     private void jLabel_EmptyIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyIDMouseClicked
         jLabel_EmptyID.setForeground(Color.white);
     }//GEN-LAST:event_jLabel_EmptyIDMouseClicked
+
+    private void jLabel_FormTitleComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel_FormTitleComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel_FormTitleComponentMoved
 
     /**
      * @param args the command line arguments

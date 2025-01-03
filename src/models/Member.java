@@ -1,6 +1,7 @@
 
 package models;
 
+import models.Member;
 import classes.DB;
 import classes.GetData;
 import java.sql.PreparedStatement;
@@ -198,10 +199,42 @@ public class Member {
                 rs.getString(6), 
                 rs.getBytes(7)
             );
-        } else {
+          } else 
+        {
             return null;
-        }
-        
-        
+        }  
+
     }
+    
+    public ArrayList<Member> member() {
+                ArrayList<Member> mList = new ArrayList<>();
+                String selectQuery = "SELECT * FROM `member`";
+
+                try (PreparedStatement ps = DB.getConnection().prepareStatement(selectQuery);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while(rs.next()) {
+                Member member = new Member(
+                    rs.getInt("id"),
+                    rs.getString("firstName"),
+                    rs.getString("lastName"), 
+                    rs.getString("phone"),
+                    rs.getString("email"),
+                    rs.getString("gender"),
+                    rs.getBytes("picture")
+                );
+                mList.add(member);
+                }
+                
+               } catch (SQLException ex) 
+               {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mList;
+    }
+
+    public ArrayList<Member> memberList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }
