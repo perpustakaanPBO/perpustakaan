@@ -179,7 +179,7 @@ public class MemberList extends javax.swing.JFrame {
     public void populateJtableWithMember(){
         
         
-        ArrayList<Member> memberList = member.memberList();
+        ArrayList<Member> memberList = member.membersList();
         
         String[] colNames = {"ID","F-Name","L-Name","Phone","Email","Gender"};
         

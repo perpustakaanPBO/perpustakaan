@@ -199,21 +199,20 @@ public class Member {
                 rs.getString(6), 
                 rs.getBytes(7)
             );
-          } else 
-        {
+        } else{
             return null;
         }  
 
     }
     
     public ArrayList<Member> member() {
-                ArrayList<Member> mList = new ArrayList<>();
-                String selectQuery = "SELECT * FROM `member`";
+        ArrayList<Member> mList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM `member`";
 
-                try (PreparedStatement ps = DB.getConnection().prepareStatement(selectQuery);
-                 ResultSet rs = ps.executeQuery()) {
+        try (PreparedStatement ps = DB.getConnection().prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery()) {
 
-                while(rs.next()) {
+            while(rs.next()) {
                 Member member = new Member(
                     rs.getInt("id"),
                     rs.getString("firstName"),
@@ -224,17 +223,38 @@ public class Member {
                     rs.getBytes("picture")
                 );
                 mList.add(member);
-                }
-                
-               } catch (SQLException ex) 
-               {
-            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return mList;
+            }
+
+       } catch (SQLException ex) {
+           
+           Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+
+       }
+        
+       return mList;
     }
 
-    public ArrayList<Member> memberList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<Member> membersList() {
+        ArrayList<Member> mList = new ArrayList<>();
+        
+        GetData data = new GetData();
+        
+        try{
+        
+            ResultSet rs = data.get("SELECT * FROM `member`");
+            
+            Member member;
+            
+            while(rs.next()){
+            
+                member = new Member(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("phone"), rs.getString("email"), rs.getString("gender"), rs.getBytes("picture"));
+                mList.add(member);
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return mList;
     }
     
 }

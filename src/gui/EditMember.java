@@ -362,6 +362,7 @@ public class EditMember extends javax.swing.JFrame {
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
         
         // edit the selected member 
+        int id = Integer.parseInt(jTextField_Id.getText());
         
         // hide the jlabel "empty name masage "
         jLabel_EmptyFirstName_.setVisible(false);
@@ -395,27 +396,49 @@ public class EditMember extends javax.swing.JFrame {
             
             if (imagePath != null)
             {
-                    try {
-                        
-                        File imageFile = new File(imagePath);
-                        if(imageFile.length() > 1048576) {
-                        JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
-                        return;
-                        }
-                        
-                        Integer id = Integer.valueOf(jTextField_Id.getText()); 
-                        Path path = Paths.get(imagePath);
-                        img = Files.readAllBytes(path);
-                        member.editMember(id, fname, lname, phone, email, gender, img);
-                        
-                    } catch (IOException | SQLException | NumberFormatException ex) {
-                        
-                        Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
-                        return;
-                        
+                try {
+
+                    File imageFile = new File(imagePath);
+                    if(imageFile.length() > 1048576) {
+                    JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
+                    return;
                     }
+
+                    
+                    Path path = Paths.get(imagePath);
+                    img = Files.readAllBytes(path);
+                    member.editMember(id, fname, lname, phone, email, gender, img);
+
+                } catch (IOException | SQLException | NumberFormatException ex) {
+
+                    Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Image size must be less than 1MB", "Image Too Large", 2);
+                    return;
+
+                }
                 
+                try {
+
+                    Path path = Paths.get(imagePath);
+
+                    img = Files.readAllBytes(path);
+
+                } catch (IOException ex) {
+
+                    Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+                try {
+
+                    member.editMember(id, fname, lname, phone, email, gender, img);
+
+                } catch (SQLException ex) {
+
+                    Logger.getLogger(EditMember.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
             }else{
                 
                JOptionPane.showMessageDialog(null, "Select a Profile Picture For This Member", "No Picture Selected", 2);
