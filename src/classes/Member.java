@@ -177,4 +177,37 @@ public class Member {
         }
             
     }
+       
+    public ResultSet getData (String query) throws SQLException {
+        PreparedStatement ps ;
+        ResultSet rs = null;
+        
+        ps = DB.getConnection().prepareStatement(query);
+        rs = ps.executeQuery();
+        
+        return rs;
+    }
+       
+       
+       //get member by id
+    public Member getMemberById(Integer _id) throws SQLException {
+        
+        String query = "SELECT * FROM `users` WHERE `id` = ?";
+        ResultSet rs;
+        rs = getData(query);
+        
+        if (rs.next()) {
+            return new Member(
+                rs.getInt(1), 
+                rs.getString(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5), 
+                rs.getString(6), 
+                rs.getBytes(7)
+            );
+        } else {
+            return null;
+        }
+    }
 }
