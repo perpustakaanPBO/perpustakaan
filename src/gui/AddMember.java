@@ -2,7 +2,7 @@
 package gui;
 
 import classes.DisplayImage;
-import classes.Member;
+import models.Member;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;

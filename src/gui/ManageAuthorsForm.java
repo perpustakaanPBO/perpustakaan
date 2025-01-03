@@ -2,7 +2,7 @@
 package gui;
 
 import classes.DisplayImage;
-import classes.Author;
+import models.Author;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.yellow);
         jPanel1.setBorder(panelHeaderBorder);
         
-        new DisplayImage(200,90,jLabel_FormTitle, "/assets/iPusPrime.png");
+        new DisplayImage(200,90, null, jLabel_FormTitle, "/assets/iPusPrime.png");
         
         jTable_Author_.setSelectionBackground(Color.lightGray);
         jTable_Author_.setRowHeight(30);
@@ -413,7 +413,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
     public void populateJtableWithAuthors(){
         
         
-        ArrayList<classes.Author> authorList = author.AuthorsList ();
+        ArrayList<models.Author> authorList = author.AuthorsList ();
         
         String[] colNames = {"ID","F-Name","L-Name","Expertise","About"};
         

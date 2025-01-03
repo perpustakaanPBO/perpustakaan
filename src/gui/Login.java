@@ -255,7 +255,7 @@ public class Login extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         
         
-        new DisplayImage(jLabel_Logo.getWidth(),jLabel_Logo.getHeight(), jLabel_Logo, "/assets/iPusPrime.png");
+        new DisplayImage(jLabel_Logo.getWidth(),jLabel_Logo.getHeight(), null, jLabel_Logo, "/assets/iPusPrime.png");
     }
 
     public static void main(String[] args) {

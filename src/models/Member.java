@@ -1,6 +1,8 @@
 
-package classes;
+package models;
 
+import classes.DB;
+import classes.GetData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +32,7 @@ public class Member {
         this.firstName = _fname;
         this.lastName = _lname;
         this.phone = _phone;
-        this.phone = _email;
+        this.email = _email;
         this.gender= _gender;
         this.picture = _picture;
         
@@ -177,24 +179,14 @@ public class Member {
         }
             
     }
-       
-    public ResultSet getData (String query) throws SQLException {
-        PreparedStatement ps ;
-        ResultSet rs = null;
-        
-        ps = DB.getConnection().prepareStatement(query);
-        rs = ps.executeQuery();
-        
-        return rs;
-    }
-       
-       
-       //get member by id
+         
+    //get member by id
     public Member getMemberById(Integer _id) throws SQLException {
         
-        String query = "SELECT * FROM `users` WHERE `id` = ?";
+        String query = "SELECT * FROM `member` WHERE `id` = " + _id;
         ResultSet rs;
-        rs = getData(query);
+        rs = new GetData().get(query);
+        
         
         if (rs.next()) {
             return new Member(
@@ -209,5 +201,7 @@ public class Member {
         } else {
             return null;
         }
+        
+        
     }
 }

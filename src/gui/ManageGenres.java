@@ -6,7 +6,7 @@
 package gui;
 
 import classes.DisplayImage;
-import classes.Genre;
+import models.Genre;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class ManageGenres extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.yellow);
         jPanel1.setBorder(panelHeaderBorder);
         
-        new DisplayImage(200,90,jLabel_FormTitle, "/assets/iPusPrime.png");
+        new DisplayImage(200,90, null, jLabel_FormTitle, "/assets/iPusPrime.png");
         
         jTable_Genres.setSelectionBackground(Color.lightGray);
         jTable_Genres.setRowHeight(30);
@@ -317,7 +317,7 @@ public class ManageGenres extends javax.swing.JFrame {
     
     public void populateJtableWithGenres(){
         
-        ArrayList<classes.Genre> genresList = genre.genreList ();
+        ArrayList<models.Genre> genresList = genre.genreList ();
         
         String[] colNames = {"ID","NAME"};
         
