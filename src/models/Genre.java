@@ -6,10 +6,12 @@
 package models;
 
 import classes.DB;
+import classes.GetData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,9 +25,7 @@ public class Genre extends DB {
     private int id;
     private String name;
     
-    public Genre(){
-        
-    }
+    public Genre(){}
     
     public Genre(int _id, String _name){
         
@@ -130,6 +130,7 @@ public class Genre extends DB {
         String selectQuery = "SELECT * FROM `book_genres`";
         PreparedStatement ps;
         ResultSet rs;
+        
         try{
             ps = DB.getConnection().prepareStatement(selectQuery);
             rs = ps.executeQuery();
@@ -138,7 +139,7 @@ public class Genre extends DB {
             
             while(rs.next()){
                 
-                genre = new Genre(rs.getInt("id"), rs.getString("name"));
+                genre = new Genre(rs.getInt("id"), rs.getString("nama"));
                 gList.add(genre);
             }
      
@@ -147,6 +148,31 @@ public class Genre extends DB {
         }
         
         return gList;
+    }
+    
+    public HashMap<String, Integer> getGenresMap(){
+        
+        HashMap<String, Integer> map = new HashMap<>();
+        ResultSet rs;
+        
+        try{
+        
+            rs = new GetData().get("SELECT * FROM `book_genres`");
+            
+            Genre genre;
+            
+            while(rs.next()){
+                
+                genre = new Genre(rs.getInt("id"), rs.getString("nama"));
+                map.put(genre.getName(), genre.getId());
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        
+        
+        return map;
     }
 }
       

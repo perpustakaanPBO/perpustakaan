@@ -86,7 +86,7 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         jLabel_FormTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel_FormTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_FormTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_FormTitle.setText("Manage Books Genres");
+        jLabel_FormTitle.setText("Manage Author");
         jLabel_FormTitle.setOpaque(true);
 
         jLabel_CloseForm.setBackground(java.awt.Color.gray);

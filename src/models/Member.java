@@ -234,14 +234,20 @@ public class Member {
        return mList;
     }
 
-    public ArrayList<Member> membersList() {
+    public ArrayList<Member> membersList(String query) {
         ArrayList<Member> mList = new ArrayList<>();
         
         GetData data = new GetData();
         
         try{
-        
-            ResultSet rs = data.get("SELECT * FROM `member`");
+            
+            if(query.equals("")){
+                
+                query = "SELECT * FROM `member`";
+                
+            }
+            
+            ResultSet rs = data.get(query);
             
             Member member;
             

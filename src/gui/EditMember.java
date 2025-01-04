@@ -2,6 +2,7 @@
 package gui;
 
 import classes.DisplayImage;
+import classes.SelectImage;
 import models.Member;
 import java.awt.Color;
 import java.io.File;
@@ -495,24 +496,7 @@ public class EditMember extends javax.swing.JFrame {
 
     private void jButton_SelectProfilePicture_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectProfilePicture_ActionPerformed
         // select pic from the computer
-        JFileChooser fileChooser = new JFileChooser ();
-        fileChooser.setDialogTitle("Select Profile Picture");
-        
-        fileChooser.setCurrentDirectory(new File ("C:\\images"));
-        
-        FileNameExtensionFilter extentionFilter = new FileNameExtensionFilter("image",".png",".jpg",".jpeg");
-        fileChooser.addChoosableFileFilter (extentionFilter);
-        
-        int fileState = fileChooser.showSaveDialog(null);
-        
-        if(fileState == JFileChooser.APPROVE_OPTION)
-        {
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            jLabel_ImagePath.setText(path);
-            imagePath = path;
-            
-            new DisplayImage(jLabel_Image.getWidth(), jLabel_Image.getWidth(), null, jLabel_Image, path);
-        }
+        imagePath = new SelectImage().select(jLabel_ImagePath);
     }//GEN-LAST:event_jButton_SelectProfilePicture_ActionPerformed
 
     private void jTextField_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IdActionPerformed
