@@ -6,9 +6,10 @@
 package models;
 
 import classes.DB;
+import classes.GetData;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Book {
     
+    private Integer id;
     private String isbn;
     private String name;
     private Integer author_id;
@@ -32,8 +34,9 @@ public class Book {
     
     public Book(){}
     
-    public Book(String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, String _publisher, double _price, String _date_received, String _description, byte[] _cover){
+    public Book(Integer _id, String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, String _publisher, double _price, String _date_received, String _description, byte[] _cover){
         
+        this.id = _id;
         this.isbn = _isbn;
         this.name = _name;
         this.author_id = _author_id;
@@ -46,6 +49,10 @@ public class Book {
         this.cover = _cover;
     }
 
+    public Integer getId() {
+        return id;
+    }
+    
     public String getIsbn() {
         return isbn;
     }
@@ -84,6 +91,10 @@ public class Book {
 
     public byte[] getCover() {
         return cover;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setIsbn(String isbn) {
@@ -147,6 +158,47 @@ public class Book {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
         }
     
+    }
+    
+    public boolean isISBNExists(String _isbn) throws SQLException{
+        
+        GetData getData = new GetData();
+        String query = "SELECT * FROM `books` WHERE `isbn` = '" + _isbn +"'";
+        
+        ResultSet rs = getData.get(query);
+        
+        return rs.next();
+    }
+    
+    
+    public Book searchBookByID_ISBN(int id, String _isbn) throws SQLException{
+    
+        String query = "SELECT * FROM `books` WHERE `isbn` = '" + _isbn +"' OR `id` = '" + id + "'";
+          
+        GetData getData = new GetData();
+        
+        ResultSet rs = getData.get(query);
+        
+        Book book = null;
+        
+        
+        try{
+            
+            if(rs.next()){
+                
+                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getBytes(11));
+            
+            }else{
+                
+                return null;
+            
+            }
+        
+        }catch(SQLException ex){
+            
+        }
+        
+        return book;
     }
     
 }
