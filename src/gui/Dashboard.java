@@ -103,15 +103,15 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel_1 = new javax.swing.JPanel();
         jPanel_1_header = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel_BookCount = new javax.swing.JLabel();
         jPanel_2 = new javax.swing.JPanel();
         jPanel_2_header = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel_MemberCount = new javax.swing.JLabel();
         jPanel_3 = new javax.swing.JPanel();
         jPanel_3_header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel_AuthorCount = new javax.swing.JLabel();
         jPanel_4 = new javax.swing.JPanel();
         jPanel_4_header = new javax.swing.JPanel();
 
@@ -297,9 +297,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
         );
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("00535");
+        jLabel_BookCount.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
+        jLabel_BookCount.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_BookCount.setText("00535");
 
         javax.swing.GroupLayout jPanel_1Layout = new javax.swing.GroupLayout(jPanel_1);
         jPanel_1.setLayout(jPanel_1Layout);
@@ -309,7 +309,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_1Layout.createSequentialGroup()
                     .addGap(124, 124, 124)
-                    .addComponent(jLabel6)
+                    .addComponent(jLabel_BookCount)
                     .addContainerGap(132, Short.MAX_VALUE)))
         );
         jPanel_1Layout.setVerticalGroup(
@@ -320,7 +320,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_1Layout.createSequentialGroup()
                     .addContainerGap(164, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_BookCount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(80, 80, 80)))
         );
 
@@ -349,9 +349,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
         );
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("00535");
+        jLabel_MemberCount.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
+        jLabel_MemberCount.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MemberCount.setText("00535");
 
         javax.swing.GroupLayout jPanel_2Layout = new javax.swing.GroupLayout(jPanel_2);
         jPanel_2.setLayout(jPanel_2Layout);
@@ -361,7 +361,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_2Layout.createSequentialGroup()
                     .addContainerGap(137, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
+                    .addComponent(jLabel_MemberCount)
                     .addGap(115, 115, 115)))
         );
         jPanel_2Layout.setVerticalGroup(
@@ -372,7 +372,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_2Layout.createSequentialGroup()
                     .addContainerGap(170, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_MemberCount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(74, 74, 74)))
         );
 
@@ -401,9 +401,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("18");
+        jLabel_AuthorCount.setFont(new java.awt.Font("Segoe UI", 1, 64)); // NOI18N
+        jLabel_AuthorCount.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_AuthorCount.setText("18");
 
         javax.swing.GroupLayout jPanel_3Layout = new javax.swing.GroupLayout(jPanel_3);
         jPanel_3.setLayout(jPanel_3Layout);
@@ -412,7 +412,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jPanel_3_header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel_3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(jLabel_AuthorCount)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_3Layout.setVerticalGroup(
@@ -420,7 +420,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel_3Layout.createSequentialGroup()
                 .addComponent(jPanel_3_header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_AuthorCount, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 86, Short.MAX_VALUE))
         );
 
@@ -581,12 +581,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_AuthorCount;
+    private javax.swing.JLabel jLabel_BookCount;
     private javax.swing.JLabel jLabel_Dashboard_Logo;
+    private javax.swing.JLabel jLabel_MemberCount;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_1;
     private javax.swing.JPanel jPanel_1_header;

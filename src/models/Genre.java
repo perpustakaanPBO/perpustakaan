@@ -174,6 +174,31 @@ public class Genre extends DB {
         
         return map;
     }
+    
+    
+    public Genre getGenreById(int id) throws SQLException{
+        
+        ResultSet rs = new GetData().get("SELECT * FROM `book_genres` WHERE `id` = " + id);
+        
+        Genre genre = null;
+          
+        
+        try{
+        
+            if(rs.next()){
+
+                genre = new Genre(rs.getInt("id"), rs.getString("nama"));
+
+            }
+        
+        }catch(SQLException ex){
+        
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return genre;
+    }
 }
       
     

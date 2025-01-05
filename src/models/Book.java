@@ -289,11 +289,16 @@ public class Book {
     
     //funcion to populate an arraylist whit books
     
-     public ArrayList<Book> BooksList(){
+     public ArrayList<Book> BooksList(String query){
         
         ArrayList<Book> bList = new ArrayList<>();
         
-        String selectQuery = "SELECT * FROM `books`";
+        if(query.equals("")){
+            
+            query = "SELECT * FROM `books`";
+        }
+        
+        String selectQuery = query;
         PreparedStatement ps;
         ResultSet rs;
         try{
