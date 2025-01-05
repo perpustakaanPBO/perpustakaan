@@ -10,6 +10,7 @@ import classes.GetData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -286,4 +287,55 @@ public class Book {
         return book;
     }
     
+    //funcion to populate an arraylist whit books
+    
+     public ArrayList<Book> BooksList(){
+        
+        ArrayList<Book> bList = new ArrayList<>();
+        
+        String selectQuery = "SELECT * FROM `books`";
+        PreparedStatement ps;
+        ResultSet rs;
+        try{
+            ps = DB.getConnection().prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+            
+            Book book;
+            
+            while(rs.next()){
+                
+              
+                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getBytes(11));
+                bList.add(book);
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bList;
+     }
+    
+     //get book by id
+    public Book getBookById(Integer _id) throws SQLException {
+        
+        
+        String query = "SELECT * FROM `books` WHERE `id` = " + _id;
+        ResultSet rs;
+        rs = new GetData().get(query);
+        
+        
+        if (rs.next())
+          {
+            return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getBytes(11));
+          } 
+        
+        else 
+         {
+            return null;
+         }  
+
+    }
+     
+     
 }
