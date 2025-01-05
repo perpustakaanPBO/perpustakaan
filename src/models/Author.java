@@ -2,6 +2,7 @@
 package models;
 
 import classes.DB;
+import classes.GetData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -183,5 +184,29 @@ public class Author {
         }
         
         return aList;
+    }
+    
+    public Author getAuthorById(int id) throws SQLException{
+        
+        ResultSet rs = new GetData().get("SELECT * FROM `author` WHERE `id` = " + id);
+        
+        Author author = null;
+          
+        
+        try{
+        
+            if(rs.next()){
+
+                author = new Author(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("expertise"), rs.getString("about"));
+
+            }
+        
+        }catch(SQLException ex){
+        
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return author;
     }
 }

@@ -20,6 +20,7 @@ public class AuthorListForm extends javax.swing.JFrame {
      */
     
     Author author = new Author();
+    public static String formType = "";
     
     public AuthorListForm() {
         initComponents();
@@ -169,8 +170,16 @@ public class AuthorListForm extends javax.swing.JFrame {
         
         String full_name = firstName +" "+ lastName;
         
+        if(formType.equals("Edit")){
         
-        AddBookForm.displayAuthorData(index, full_name);
+            EditBookForm.displayAuthorData(id, full_name);
+            
+        }else{
+            
+            AddBookForm.displayAuthorData(id, full_name);        
+        
+        }
+        
         
         
         this.dispose();

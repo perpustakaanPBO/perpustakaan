@@ -160,6 +160,91 @@ public class Book {
     
     }
     
+    public void editBook(Integer _id, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, String _publisher, double _price, String _date_received, String _description, byte[] _cover){
+        
+        String updateQuery = "";
+        PreparedStatement ps;
+        
+        try{
+            if(_cover != null){
+        
+                updateQuery = "UPDATE `books` SET `name` = ?, `author_id` = ?, `genre_id` = ?, `quantity` = ?, `publisher` = ?, `price` = ?, `date_received` = ?, `description` = ?, `cover` = ? WHERE `id` = ?";
+
+                ps = DB.getConnection().prepareStatement(updateQuery);
+
+                //ps.setString(1, _isbn);
+                ps.setString(1, _name);
+                ps.setInt(2, _author_id);
+                ps.setInt(3, _genre_id);
+                ps.setInt(4, _quantity);
+                ps.setString(5, _publisher);
+                ps.setDouble(6, _price);
+                ps.setString(7, _date_received);
+                ps.setString(8, _description);
+                ps.setBytes(9, _cover);
+                ps.setInt(10, _id);
+
+                if(ps.executeUpdate() != 0){
+                    JOptionPane.showMessageDialog(null, "Book Edited", "Edit Book", 1);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Book Not Edited", "Edit Book", 2);
+                }
+            
+        
+            }else{
+
+                updateQuery = "UPDATE `books` SET `name` = ?, `author_id` = ?, `genre_id` = ?, `quantity` = ?, `publisher` = ?, `price` = ?, `date_received` = ?, `description` = ? WHERE `id` = ?";
+                ps = DB.getConnection().prepareStatement(updateQuery);
+
+                //ps.setString(1, _isbn);
+                ps.setString(1, _name);
+                ps.setInt(2, _author_id);
+                ps.setInt(3, _genre_id);
+                ps.setInt(4, _quantity);
+                ps.setString(5, _publisher);
+                ps.setDouble(6, _price);
+                ps.setString(7, _date_received);
+                ps.setString(8, _description);
+                //ps.setBytes(9, _cover);
+                ps.setInt(9, _id);
+            }        
+ 
+            if(ps.executeUpdate() != 0){
+                JOptionPane.showMessageDialog(null, "Book Edited", "Edit Book", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Book Not Edited", "Edit Book", 2);
+            }
+        }catch(SQLException e){
+            
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
+        }
+    
+    }
+    
+    public void removeBook(Integer _id){
+    
+        String removeBook = "DELETE FROM `books` WHERE `id` = ?"; 
+       
+        try{
+            
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeBook);
+            
+            ps.setInt(1, _id);
+           
+            
+            if(ps.executeUpdate() != 0){
+                JOptionPane.showMessageDialog(null, "Book Deleted", "remove", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Book Not Deleted", "remove", 2);
+            }
+        }catch(SQLException e){
+            
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, e);
+        }
+    
+    }
+    
+    
     public boolean isISBNExists(String _isbn) throws SQLException{
         
         GetData getData = new GetData();

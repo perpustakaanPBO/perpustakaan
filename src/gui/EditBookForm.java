@@ -4,20 +4,22 @@
  */
 package gui;
 
+import classes.DisplayImage;
 import classes.SelectImage;
 import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
+import java.util.Objects;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import models.Author;
 import models.Book;
 import models.Genre;
 /**
@@ -34,7 +36,8 @@ public class EditBookForm extends javax.swing.JFrame {
     HashMap<String, Integer> genresMap =  genre.getGenresMap();
     
     Book book = new Book();
- 
+    
+    Author author = new Author();
     
     public EditBookForm() {
         initComponents();
@@ -511,57 +514,57 @@ public class EditBookForm extends javax.swing.JFrame {
 
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
         // TODO add your handling code here:
-//        String isbn = jTextField_ISBN.getText();
-//
-//       if(verif()){
-//           
-//           JOptionPane.showMessageDialog(this, "One or more fields are empty", "Field Empty", 2);
-//        
-//       }else try {
-//           if(book.isISBNExists(isbn)){
-//               
-//                JOptionPane.showMessageDialog(this, "The ISBN is already exists", "Wrong ISBN", 2);
-//                
-//           }else{
-//               try {
-//                   String name = jTextField_Name.getText();
-//                   String publisher = jTextField_Publisher.getText();
-//                   
-//                   Integer author_id = Integer.parseInt(jLabel_AuthorId.getText());
-//                   Integer genre_id = 0;
-//                   Integer quantity = Integer.parseInt(jSpinner_Quantity.getValue().toString());
-//                   
-//                   Double price = Double.parseDouble(jTextField_Price.getText());
-//                   
-//                   byte[] img = null;
-//                   
-//                   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                   
-//                   String date_received = dateFormat.format(jDateChooser_DateReceived.getDate());
-//                   
-//                   Path path = Paths.get(imagePath);
-//                   
-//                   img = Files.readAllBytes(path);
-//                   
-//                   Book book = new Book();
-//                   
-//                   book.addBook(isbn, name, author_id, genre_id, quantity, publisher, price, date_received, isbn, img);
-//                   
-//               } catch (IOException ex) {
-//                   
-//                   JOptionPane.showMessageDialog(null, "Make sure to add image cover", "Empty Fields", 2);
-//                   
-//               } catch(NumberFormatException ex){
-//                   
-//                   JOptionPane.showMessageDialog(null, "You Entered Wrong Data in Number Field", "Wrong Fields", 2);
-//                   
-//               } catch (NullPointerException ex){
-//                   JOptionPane.showMessageDialog(null, "You need to select a date", "Empty Fields", 2);
-//                   
-//               }
-//           }} catch (SQLException ex) {
-//            Logger.getLogger(EditBookForm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        String isbn = jTextField_ISBN.getText();
+
+       if(verif()){
+           
+           JOptionPane.showMessageDialog(this, "One or more fields are empty", "Field Empty", 2);
+        
+       }else try {
+           Integer id = Integer.parseInt(jTextField_ID.getText());
+           String name = jTextField_Name.getText();
+           String publisher = jTextField_Publisher.getText();
+           String description = jTextArea_BookDescription.getText();
+           
+           Integer author_id = Integer.parseInt(jLabel_AuthorId.getText());
+           Integer genre_id = Integer.parseInt(jLabel_GenreId.getText());
+           Integer quantity = Integer.parseInt(jSpinner_Quantity.getValue().toString());
+           
+           Double price = Double.parseDouble(jTextField_Price.getText());
+           
+           byte[] img = null;
+           Path path = Paths.get(imagePath);
+           
+           
+           
+           
+           
+           SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+           
+           String date_received = dateFormat.format(jDateChooser_DateReceived.getDate());
+           
+           Book book = new Book();
+           
+           
+           try{
+                img = Files.readAllBytes(path);
+                book.editBook(id, name, author_id, genre_id, quantity, publisher, price, date_received, description, img);
+
+           }catch(IOException ex){
+               
+                book.editBook(id, name, author_id, genre_id, quantity, publisher, price, date_received, description, null);
+
+           }
+           
+           
+       }  catch(NumberFormatException ex){
+           
+           JOptionPane.showMessageDialog(null, "You Entered Wrong Data in Number Field", "Wrong Fields", 2);
+           
+       } catch (NullPointerException ex){
+           JOptionPane.showMessageDialog(null, "You need to select a date", "Empty Fields", 2);
+           
+       }
         
         
     }//GEN-LAST:event_jButton_EditActionPerformed
@@ -570,6 +573,8 @@ public class EditBookForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         AuthorListForm authorForm = new AuthorListForm();
+        
+        authorForm.formType = "Edit";
         
         authorForm.setVisible(true);
     }//GEN-LAST:event_jButton_SelectAuthorActionPerformed
@@ -591,6 +596,7 @@ public class EditBookForm extends javax.swing.JFrame {
 
     private void jButton_Cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cancel1ActionPerformed
         // TODO add your handling code here:
+        jTextField_ID.setText("");
         jTextField_ISBN.setText("");
         jTextField_Author.setText("");
         jTextField_Name.setText("");
@@ -659,8 +665,28 @@ public class EditBookForm extends javax.swing.JFrame {
                 jTextArea_BookDescription.setText(selectedBook.getDescription());
                 
                 jLabel_AuthorId.setText(String.valueOf(selectedBook.getAuthor_id()));
-                jLabel_GenreId.setText(String.valueOf(selectedBook.getGenre_id()));
+                String fullName = (author.getAuthorById(selectedBook.getAuthor_id())).getFirstName() + " " + (author.getAuthorById(selectedBook.getAuthor_id())).getLastName();
                 
+                jTextField_Author.setText(fullName);
+                
+                for(Map.Entry<String, Integer> entry : genresMap.entrySet()){
+                
+                    if(Objects.equals(selectedBook.getGenre_id(), entry.getValue())){
+                        
+                        jComboBox_Genre.setSelectedItem(entry.getKey());
+                        
+                        jLabel_GenreId.setText(String.valueOf(selectedBook.getGenre_id()));
+
+                    }
+                
+                }
+                
+                Date date_received = new SimpleDateFormat("yyyy-MM-dd").parse(selectedBook.getDate_received());
+                jDateChooser_DateReceived.setDate(date_received);
+                
+                byte[] img = selectedBook.getCover();
+                
+                new DisplayImage(jLabel_Image.getWidth(), jLabel_Image.getHeight(), img, jLabel_Image, "");
 
             } catch (Exception ex) {
 
@@ -685,14 +711,14 @@ public class EditBookForm extends javax.swing.JFrame {
     
     }
     
-//    public boolean verif(){
-//    
-//        if(jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") || jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("")){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
+    public boolean verif(){
+    
+        if(jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") || jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("")){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
     public void fillJComboBoxWithGenres(){
     

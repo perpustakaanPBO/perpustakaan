@@ -488,7 +488,7 @@ public class AddBookForm extends javax.swing.JFrame {
                    
                    
                    Integer author_id = Integer.parseInt(jLabel_AuthorId.getText());
-                   Integer genre_id = 0;
+                   Integer genre_id = Integer.parseInt(jLabel_GenreId.getText());
                    Integer quantity = Integer.parseInt(jSpinner_Quantity.getValue().toString());
                    String description = jTextArea_BookDescription.getText();
                    
