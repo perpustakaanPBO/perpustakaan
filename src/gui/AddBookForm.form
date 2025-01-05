@@ -70,45 +70,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" min="-2" pref="58" max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel11" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField_Name" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField_ISBN" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jSpinner_Quantity" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jComboBox_Genre" alignment="0" pref="156" max="32767" attributes="0"/>
-                                              <Component id="jTextField_Author" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel_AuthorId" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jButton_SelectAuthor" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel_GenreId" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel13" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="jLabel12" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -117,8 +84,46 @@
                                       <Component id="jDateChooser_DateReceived" alignment="0" pref="315" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel15" min="-2" pref="131" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="jLabel11" pref="130" max="32767" attributes="0"/>
+                                                  <Component id="jLabel10" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jLabel8" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextField_ISBN" pref="315" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jComboBox_Genre" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel_GenreId" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jSpinner_Quantity" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jTextField_Author" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                                              <Component id="jLabel_AuthorId" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jButton_SelectAuthor" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jTextField_Name" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="91" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane1" min="-2" pref="557" max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
@@ -178,26 +183,19 @@
                               <Component id="jLabel9" min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jTextField_Name" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField_Author" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton_SelectAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_AuthorId" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="jLabel15" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jTextField_Author" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jButton_SelectAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_AuthorId" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel10" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jComboBox_Genre" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox_Genre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel_GenreId" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -206,7 +204,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jSpinner_Quantity" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinner_Quantity" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextField_Publisher" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -242,7 +240,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
+                  <EmptySpace pref="102" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_Add" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jButton_Cancel1" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
