@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Book;
-import static sun.jvm.hotspot.HelloWorld.e;
 
 /**
  *

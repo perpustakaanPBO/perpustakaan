@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package classes;
+package gui;
 
+import classes.Issue_Book;
 import gui.*;
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -17,11 +18,9 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import models.Author;
 import models.Book;
 import models.Genre;
 import models.Member;
-import static sun.jvm.hotspot.HelloWorld.e;
 /**
  *
  * @author kadekbuktiasa
@@ -162,6 +161,11 @@ public class IssueBookForm extends javax.swing.JFrame {
         jLabel_MemberFullname.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel_MemberFullname.setForeground(new java.awt.Color(51, 102, 255));
         jLabel_MemberFullname.setText("Member FullName");
+        jLabel_MemberFullname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_MemberFullnameMouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         jLabel11.setText("Enter Book ID :");
@@ -176,6 +180,11 @@ public class IssueBookForm extends javax.swing.JFrame {
         jLabel_BookName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel_BookName.setForeground(new java.awt.Color(51, 102, 255));
         jLabel_BookName.setText("Book Name");
+        jLabel_BookName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_BookNameMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         jLabel9.setText("Is This Book Available : ");
@@ -338,11 +347,12 @@ public class IssueBookForm extends javax.swing.JFrame {
                 //dislpay the book title 
                 jLabel_MemberFullname.setText(selectedMember.getFirstName() + " "+ selectedMember.getLastName());
                 
-                jLabel_MemberFullname.setText("Member FullName");
-                Member_Exist = false;            }
+//                jLabel_MemberFullname.setText("Member FullName");
+                    Member_Exist = true;
+            }
             else 
             {
-            //if this member doesn't exit  
+              //if this member doesn't exit  
               JOptionPane.showMessageDialog(null, "this member doesn't exit", "Member Not Found", 2);
             
               Member_Exist = false;
@@ -396,13 +406,23 @@ public class IssueBookForm extends javax.swing.JFrame {
 
             }
             // we need to check if this  book is available 
-            else if (rtnDate.before(issDate))//if the return date is higher that issue date 
+            else if (rtnDate.before(issDate))//if the return date is higher than issue date 
             {
                 JOptionPane.showMessageDialog(null, "the return Date must be after the issue date", "Wrong return date", 2);
             }
             else
             {
                 issue.addIssue(_book_id, _member_id, "Issued", _issue_date, _return_date, _note);
+                jSpinner_BookID.setValue(0);
+                jSpinner_MemberID.setValue(0);
+                jLabel_BookName.setText("Book Name ");
+                jLabel_MemberFullname.setText("Member Fullname");
+                jLabel_Available.setText("YES-or-NO");
+                jLabel_Available.setForeground(new Color(51, 102, 255));
+                jDateChooser_IssueDate.setDate(new Date());
+                jDateChooser_ReturnDate.setDate(new Date());
+                Book_Exist = true;
+                Member_Exist = true;
             }
             
             
@@ -468,6 +488,20 @@ public class IssueBookForm extends javax.swing.JFrame {
              Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }//GEN-LAST:event_jButton_SearchBookActionPerformed
+
+    private void jLabel_BookNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookNameMouseClicked
+        // TODO add your handling code here:
+        BooksInfoCard info = new BooksInfoCard((int) jSpinner_BookID.getValue());
+        
+        info.setVisible(true);
+    }//GEN-LAST:event_jLabel_BookNameMouseClicked
+
+    private void jLabel_MemberFullnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberFullnameMouseClicked
+        // TODO add your handling code here:
+        
+        MemberInfoCard info = new MemberInfoCard();
+        info.setVisible(true);
+    }//GEN-LAST:event_jLabel_MemberFullnameMouseClicked
 
     
     public static void displayAuthorData(int id, String fullName){
@@ -536,7 +570,7 @@ public class IssueBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_BookName;
     private javax.swing.JLabel jLabel_CloseForm;
     private javax.swing.JLabel jLabel_FormTitle;
-    private javax.swing.JLabel jLabel_GenreId;
+    private static javax.swing.JLabel jLabel_GenreId;
     private javax.swing.JLabel jLabel_ImagePath;
     private javax.swing.JLabel jLabel_MemberFullname;
     private javax.swing.JPanel jPanel1;
