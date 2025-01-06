@@ -496,9 +496,13 @@ public class AddBookForm extends javax.swing.JFrame {
                    
                    byte[] img = null;
                    
+                   
+                   
                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                    
                    String date_received = dateFormat.format(jDateChooser_DateReceived.getDate());
+                   
+                   
                    
                    Path path = Paths.get(imagePath);
                    

@@ -355,7 +355,7 @@ public class Book {
         
             st = DB.getConnection().createStatement();
             
-            rs = st.executeQuery("SELECT `cover` FROM `books` LIMIT 5");
+            rs = st.executeQuery("SELECT `cover` FROM `books` order by id desc LIMIT 5");
             
             byte[] image;
             int i = 0;
