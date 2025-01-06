@@ -6,13 +6,16 @@
 package models;
 
 import classes.DB;
+import classes.DisplayImage;
 import classes.GetData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -340,6 +343,36 @@ public class Book {
             return null;
          }  
 
+    }
+    
+    
+    public void displayBookCover(JLabel[] labels_tab) throws SQLException{
+        
+        ResultSet rs;
+        Statement st;
+        
+        try{
+        
+            st = DB.getConnection().createStatement();
+            
+            rs = st.executeQuery("SELECT `cover` FROM `books` LIMIT 5");
+            
+            byte[] image;
+            int i = 0;
+            
+            while(rs.next()){
+            
+                image = rs.getBytes("cover");
+                new DisplayImage(labels_tab[i].getWidth(), labels_tab[i].getHeight(), image, labels_tab[i],"");
+                i++;
+            }
+            
+        }catch(SQLException ex){
+        
+            
+        
+        }
+    
     }
      
      
